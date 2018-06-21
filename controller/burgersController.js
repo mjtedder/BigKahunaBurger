@@ -15,10 +15,10 @@ router.get('/', (req, res) => {
 });
 
 // selectAll
-router.get('/', (req, res) => {
+router.get('/index', (req, res) => {
     burger.all((data) => {
         let object = {
-            burger: data
+            burgers: data
         };
         console.log(object);
         res.render('index', object);
@@ -35,7 +35,7 @@ router.post('/api/burgers', (req, res) => {
 });
 
 // updateOne
-router.put('/api/burgers/eat/:id', (req, res) => {
+router.put('/api/burgers/:id', (req, res) => {
     let condition = req.params.id;
 
     console.log(condition);

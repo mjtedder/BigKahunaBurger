@@ -7,10 +7,10 @@ let orm = {
     //selectAll
     selectAll: (cb) => {
         let queryString = 'SELECT * FROM burgers;'
-        connection.query(queryString, (err, result) => {
+        connection.query(queryString, (err, res) => {
             if(err) { throw err;
             }
-            cb(result);
+            cb(res);
         });
     },
     //insertOne
