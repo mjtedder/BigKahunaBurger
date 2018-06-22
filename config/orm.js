@@ -7,14 +7,14 @@ let orm = {
     //selectAll
     selectAll: (cb) => {
         let queryString = 'SELECT * FROM burgers;'
-        connection.query(queryString, (err, res) => {
+        connection.query(queryString, (err, result) => {
             if(err) { throw err;
             }
-            cb(res);
+            cb(result);
         });
     },
     //insertOne
-    insertOne: (cb) => {
+    insertOne: (burger_name, cb) => {
         let queryString = 'INSERT INTO burgers (burger_name) VALUE (?);'
         connection.query(queryString, burger_name, (err, result) => {
             if(err) { throw err;
@@ -25,7 +25,7 @@ let orm = {
     //updateOne
     updateOne: (id, cb) => {
         let queryString = 'UPDATE burgers SET ? WHERE ?;'
-        connection.query(queryString, {id: id}, (err, result) => {
+        connection.query(queryString, [{devoured: true}, {id: id}], (err, result) => {
             if(err) { throw err;
             }
             cb(result);

@@ -1,92 +1,35 @@
 <h1>Let's Eat Some Burgers!</h1>
 
-<h2>Burgers devoured:</h2>
-<ul>
+<h2>Burgers Available:</h2>
     {{#each burgers}}
-        {{#unless devoured}}
-            {{> burgers/burger-block devoured=true}}
-        {{/unless}}
+    {{#unless this.devoured}}
+        <form action='/api/burgers/{{id}}' method='POST'>
+        <li>{{id}} {{burger_name}}</li><br>
+        <button class='change-devour' type='submit' id='devour'>EAT-DA-BURGER</button>
+        </form>
+        <br>
+    {{/unless}}
     {{/each}}
-</ul>
 
-<h2>Burgers not yet devoured:</h2>
-
-<ul>
+<h2>Burgers Already Devoured:</h2>
+    <ul>
     {{#each burgers}}
-        {{#if devoured}}
-            {{> burgers/burger-block devoured=false}}
-        {{/if}}
+    {{#if devoured}}
+        <form action='/burgers/clear{{id}}' method='POST'>
+        <li>{{id}} {{burger_name}}</li><br>
+        <button type='submit'>CLEAR</button>
+        </form>
+    {{/if}}
     {{/each}}
-</ul>
-
+    </ul>
 <h2>Add a Burger</h2>
-<form class='create-form'>
-
-    <div class='form-group'>
-    <label for='bu'>Burger Name:</label>
-    <input type='text' id='bur' name='name'>
-    </div>
-
-  <button type="submit">Add Burger</button>
+    <form action="/api/burgers" method="POST">
+    <input type="text" name="burger_name" value="" placeholder="Name your burger">
+    <button type="submit">Add Burger!</button>
 </form>
 
 <script type='text/javascript'>
 
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
-$(() => {
-  $('.change-devour').on('click', (event) => {
-    let id = $(this).data('id');
-    let newDevour = $(this).data('newdevour');
 
-    let newDevouredState = {
-      devoured: newDevour
-    };
-
-    // Send the PUT request.
-    $.ajax('/api/burgers/' + id, {
-      type: 'PUT',
-      data: newDevouredState
-    }).then(
-      () => {
-        console.log('burger has been devoured', newDevour);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-
-  $('.create-form').on('submit', (event) => {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    let newBurger = {
-      name: $('#bur').val().trim(),
-      devoured: $('[name=devoured]:checked').val().trim()
-    };
-
-    // Send the POST request.
-    $.ajax('/api/burgers', {
-      type: 'POST',
-      data: newBurger
-    }).then(
-      () => {
-        console.log('created new burger');
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-
-  $('.delete-burger').on('click', function(event){
-    let id = $(this).data('id');
-    console.log(id)
-
-    //for our delete request
-    $.ajax('/api/burgers/' + id, {type: 'DELETE'})
-    .then(function(){
-      console.log('this worked delete the burger!', id);
-      location.reload()
-    });
-  });
-});
 </script>
