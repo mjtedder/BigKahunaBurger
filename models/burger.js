@@ -18,8 +18,14 @@ let burger = {
             console.log(id + ' added!');
             cb(result);
         })
+    },
+    clear: (id, cb) => {
+        orm.deleteOne(id, (result) => {
+            console.log(id + ' deleted!');
+            cb(result);
+        })
     }
-}
+};
 
 //Export the databse functions for the controller
 module.exports = burger;

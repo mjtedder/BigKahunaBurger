@@ -54,9 +54,12 @@ router.post('/api/burgers/:id', (req, res) => {
 });
 
 // deleteOne (clear)
-router.post('/api/burgers/clear/:id', (req, res) => {
-    let deleteOne = req.params.id;
-    burger.clear(deleteOne, (data) => {
+router.post('/burgers/clear/:id', (req, res) => {
+    let cleared = req.params.id;
+
+    console.log(cleared);
+
+    burger.clear(cleared, (data) => {
         res.redirect('/index');
     });
 });

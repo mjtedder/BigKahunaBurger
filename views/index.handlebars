@@ -1,10 +1,16 @@
 <h1>Let's Eat Some Burgers!</h1>
 
+<h2>Add a Burger</h2>
+    <form action="/api/burgers" method="POST">
+    <input type="text" name="burger_name" value="" placeholder="Name your burger">
+    <button type="submit">Add Burger!</button>
+</form>
+
 <h2>Burgers Available:</h2>
     {{#each burgers}}
     {{#unless this.devoured}}
         <form action='/api/burgers/{{id}}' method='POST'>
-        <li>{{id}} {{burger_name}}</li><br>
+        <li>{{id}}  {{burger_name}}</li><br>
         <button class='change-devour' type='submit' id='devour'>EAT-DA-BURGER</button>
         </form>
         <br>
@@ -15,18 +21,13 @@
     <ul>
     {{#each burgers}}
     {{#if devoured}}
-        <form action='/burgers/clear{{id}}' method='POST'>
-        <li>{{id}} {{burger_name}}</li><br>
-        <button type='submit'>CLEAR</button>
-        </form>
+    <!--<form action='/burgers/clear{{id}}' method='POST'>-->
+        <li>{{id}}  {{burger_name}}</li><br>
+       <!-- <button type='submit'>CLEAR</button>
+        </form> -->
     {{/if}}
     {{/each}}
     </ul>
-<h2>Add a Burger</h2>
-    <form action="/api/burgers" method="POST">
-    <input type="text" name="burger_name" value="" placeholder="Name your burger">
-    <button type="submit">Add Burger!</button>
-</form>
 
 <script type='text/javascript'>
 
