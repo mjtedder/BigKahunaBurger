@@ -12,6 +12,6 @@ The user can create their own burger and add it to the menu.  When the user clic
 
 ## Demo
 
-Application will be deployed to Heroku at a later date.
+Application is deployed to Heroku and can accessed for demo purposes here: [Big Kahuna Burger](https://warm-ravine-54728.herokuapp.com/)
 
 
