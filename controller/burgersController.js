@@ -35,14 +35,14 @@ router.get('/api/burgers', (req, res) => {
 });
 });
 
-// insertOne
+// insertOne (Add burger button)
 router.post('/api/burgers', (req, res) => {
     burger.insert(req.body.burger_name, (data) => {
         res.redirect('/index');
     });
 });
 
-// updateOne (devour)
+// updateOne (Eat-da-burger button)
 router.post('/api/burgers/:id', (req, res) => {
     let condition = req.params.id;
 
@@ -54,14 +54,14 @@ router.post('/api/burgers/:id', (req, res) => {
 });
 
 // deleteOne (clear)
-router.post('/burgers/clear/:id', (req, res) => {
-    let cleared = req.params.id;
-
+router.delete('/api/burgers/:id', (req, res) => {
+    let cleared = 'id = ' + req.params.id;
     console.log(cleared);
 
-    burger.clear(cleared, (data) => {
+    burger.clear(cleared, function(result){
         res.redirect('/index');
-    });
+    
+});
 });
 
 

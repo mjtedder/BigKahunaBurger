@@ -34,7 +34,7 @@ let orm = {
     //deleteOne
     deleteOne: (id, cb) => {
         let queryString = 'DELETE FROM burgers WHERE ?;'
-        conection.query(queryString, {id: id}, (err, result) => {
+        connection.query(queryString, {id: id}, (err, result) => {
             if (err) { throw err;
             }
             cb(result);
