@@ -1,5 +1,6 @@
 # Big Kahuna Burger
 
+## Technologies
 Skills used to build this application:
 
 Node | Express | mySQL | Handlebars
@@ -12,6 +13,6 @@ The user can create their own burger and add it to the menu.  When the user clic
 
 ## Demo
 
-Application is deployed to Heroku and can accessed for demo purposes here: [Big Kahuna Burger](https://warm-ravine-54728.herokuapp.com/)
+Application is deployed to Heroku and can accessed for demo purposes here: [Big Kahuna Burger](https://intense-river-56961.herokuapp.com/)
 
 
